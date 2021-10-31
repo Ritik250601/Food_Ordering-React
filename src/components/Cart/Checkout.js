@@ -3,7 +3,7 @@ import Modal from "../UI/Modal";
 import React, { useRef, useState } from "react";
 
 const isEmpty = (value) => value.trim() === "";
-const isFiveChars = (value) => value.trim().length !== 5;
+const isFiveChars = (value) => value.trim().length !== 6;
 
 const Checkout = (props) => {
   const [formInputsValidity, setFormInputsValidity] = useState({
@@ -62,13 +62,13 @@ postalCode:enteredPostalCode});
     formInputsValidity.name ? "" : classes.invalid
   }`;
   const streetControlClasses = `${classes.control} ${
-    formInputsValidity.name ? "" : classes.invalid
+    formInputsValidity.street ? "" : classes.invalid
   }`;
   const postalControlClasses = `${classes.control} ${
-    formInputsValidity.name ? "" : classes.invalid
+    formInputsValidity.postalCode ? "" : classes.invalid
   }`;
   const cityControlClasses = `${classes.control} ${
-    formInputsValidity.name ? "" : classes.invalid
+    formInputsValidity.city ? "" : classes.invalid
   }`;
 
   return (
@@ -89,7 +89,7 @@ postalCode:enteredPostalCode});
         <label htmlFor="postal">Pin Code</label>
         <input type="text" id="postal" ref={userInputPostalRef} />
         {!formInputsValidity.postalCode && (
-          <p>Postal Code field must not be empty </p>
+          <p>Pin Code field must not be empty or It must be correct 6digit</p>
           )}
       </div>
       <div className={cityControlClasses}>
