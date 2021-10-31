@@ -1,4 +1,5 @@
 import classes from "./Checkout.module.css";
+import Modal from "../UI/Modal";
 import React, { useRef, useState } from "react";
 
 const isEmpty = (value) => value.trim() === "";
@@ -71,6 +72,8 @@ postalCode:enteredPostalCode});
   }`;
 
   return (
+    <Modal>
+
     <form className={classes.form} onSubmit={confirmHandler}>
       <div className={nameControlClasses}>
         <label htmlFor="name">Your Name</label>
@@ -83,11 +86,11 @@ postalCode:enteredPostalCode});
         {!formInputsValidity.street && <p>street field must not be empty </p>}
       </div>
       <div className={postalControlClasses}>
-        <label htmlFor="postal">Postal Code</label>
+        <label htmlFor="postal">Pin Code</label>
         <input type="text" id="postal" ref={userInputPostalRef} />
         {!formInputsValidity.postalCode && (
           <p>Postal Code field must not be empty </p>
-        )}
+          )}
       </div>
       <div className={cityControlClasses}>
         <label htmlFor="city">City</label>
@@ -101,6 +104,7 @@ postalCode:enteredPostalCode});
         <button className={classes.submit}>Confirm</button>
       </div>
     </form>
+          </Modal>
   );
 };
 
